@@ -7,7 +7,6 @@ import PropTypes from "prop-types";
 import Image from "next/image";
 import ContentPasteRoundedIcon from "@mui/icons-material/ContentPasteRounded";
 import { Download } from "@mui/icons-material";
-import { supabase } from "../lib/supabase";
 
 const AirbnbSlider = styled(Slider)(({ theme }) => ({
     color: "#ffff00",
@@ -64,15 +63,17 @@ function Search() {
         setValue(newValue);
     };
 
-    async function getImages() {
-        const { data, error } = await supabase.storage.from("cat");
-        console.log(data, "data");
-        console.log(error, "error");
-    }
+    // async function getImages() {
+    //     const { data, error } = await supabase.storage.from("cat");
+    //     console.log(data, "data");
+    //     console.log(error, "error");
+    // }
 
-    useEffect(() => {
-        getImages();
-    });
+    // useEffect(() => {
+    //     getImages();
+    // });
+
+    // const [data, setData] = useState(4);
 
     return (
         <>
@@ -116,7 +117,7 @@ function Search() {
                 {" "}
                 <AirbnbSlider
                     slots={{ thumb: AirbnbThumbComponent }}
-                    defaultValue={120}
+                    defaultValue={100}
                     onChange={handleSliderChange}
                     min={100}
                     max={350}
@@ -124,16 +125,7 @@ function Search() {
             </Box>
 
             <Box sx={{ display: "flex", gap: 4 }}>
-                <Box
-                    sx={{
-                        borderRadius: "8px",
-                        border: "1px solid white",
-                        position: "relative",
-                    }}
-                >
-                    <Image src="/shop.gif" width={100} height={100} alt="g" />
-                </Box>
-
+                {/* {data.map((item) => { */}
                 <Box
                     sx={{
                         borderRadius: "8px",
@@ -146,7 +138,7 @@ function Search() {
                     }}
                 >
                     <Image
-                        src="/shop.gif"
+                        src={"/shop.gif"}
                         width={value * 2}
                         height={value * 2}
                         alt="c"
@@ -164,6 +156,7 @@ function Search() {
                         </IconButton>
                     </Box>
                 </Box>
+                {/* })} */}
             </Box>
         </>
     );
