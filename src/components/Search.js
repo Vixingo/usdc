@@ -65,8 +65,9 @@ function Search() {
     };
 
     async function getImages() {
-        const { data, error } = await supabase.storage.from("cat").select();
-        console.log(data);
+        const { data, error } = await supabase.storage.from("cat");
+        console.log(data, "data");
+        console.log(error, "error");
     }
 
     useEffect(() => {
